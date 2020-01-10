@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zxx"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<%- include css2.ejs %>
+    <style>
+        .ht{
+            height: 45px;
+            width: 300px;
+        }
+      
+    </style>
+</head>
+<body>
+
+<div class="body">
+
+    <%- include donater1nav.ejs %>
+
+<div class="page_header">
+	<div class="container">
+		<div class="row">
+		<div class="col-sm-6">
+			<p>Change a Child's World</p>
+			<h4>Forgot Password</h4>
+		</div>
+		
+		<div class="col-sm-6">
+			<ul class="bcrumbs">
+				<li><a href="/">Home</a></li>
+				<li><span>Forgot Password</span></li>
+			</ul>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div class="container" style="padding:35px;">
+     
+    <div class="card row container shadow p-3 mb-3 bg-white rounded" style="width:50%;" >
+         
+       
+<form method="post">  
+<div class="card marg shadow p-3 mb-5 bg-white rounded"  >
+ 
+    <div class="card-body">
+            <b> Previous Password:</b> 
+            <input type="password" id="previous" name="previous" class="form-control ht" value= ""  required/><br>
+     <b>Password:</b> 
+	  <input type="password" id="password" name="password" class="form-control ht" value= ""  required/><br>
+      <b>  Confirm Password:</b>	
+      <input type="password" id="confirm" name="confirm" class="form-control ht" value= "" required  /><br>
+      <button type="submit" formaction="/ngo-change2" class="btn btn-info" style="width: 300px;height:60px;">Save</button>
+  </div>
+ 
+        </form>     
+        <br><br>
+You Have an Account? <a href="/ngo-login">Login</a>
+     
+      </div>
+      
+
+</div>
+</div>
+         
+<%- include footer.ejs %>
+<script src="https://unpkg.com/notie"></script>
+
+<script>
+	function perform2(){
+		notie.alert({ type: 'error', text: 'Previous Password Does not Matched !', time: 3 })
+	  }
+
+      function perform(){
+		notie.alert({ type: 'warning', text: 'Password or Confirm Password Not Matched !', time: 3 })
+	  }
+	
+</script>
+<% if(locals.alert=="1") {%>
+    <script>
+    perform();
+    </script>
+        <% } %>
+        <% if(locals.alert=="2") {%>
+            <script>
+            perform2();
+            </script>
+                <% } %>
+
+				<%- include js2.ejs %>
+   </body></html>

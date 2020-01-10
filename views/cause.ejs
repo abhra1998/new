@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="zxx"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+<%- include css2.ejs %>
+	
+</head>
+<body>
+
+<div class="body">
+
+    <%- include donater1nav.ejs %>
+
+
+
+<div class="page_header">
+	<div class="container">
+		<div class="row">
+		<div class="col-sm-6">
+			<p>Change a Child's World</p>
+			<h4>Our Causes</h4>
+		</div>
+		
+		<div class="col-sm-6">
+			<ul class="bcrumbs">
+				<li><a href="/">Home</a></li>
+				<li><span>Our Causes</span></li>
+			</ul>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div class="inner-content">
+<div class="container">
+	<div class="row">
+			<% for (var i =0; i <=data.length-1;  i++ ) { %>
+		<div class="col-sm-4 gap-60">
+			<div class="donation-causes text-center">
+				<img class="img-responsive" src="<%= data[i].photo %>" alt="">
+				
+					<h4><a href="#"><%= data[i].name %></a></h4>
+				<p><%= data[i].details %></p>
+				<br>
+				<em style="float: left;">Collect: <span class="text-style"><%= data[i].collectmoney %></span>&nbsp;USD</em>
+				<div class="sep_alt"></div>
+				<div class="group">
+					
+					
+				
+					<form action="/charge" method="post">
+						<input style="display: none;" name="name" value="<%= data[i].name %>">
+						<input type="submit" class="btn" value="Donate" style="float: right;height:20px;margin-top:-5px"   src="https://checkout.stripe.com/checkout.js" />
+						<script 
+src="https://checkout.stripe.com/checkout.js"
+class="stripe-button"
+data-key="pk_test_cpWr8SGQ6C9eldovGl2I9Ynr00BOrmsntN"
+data-amount="0"
+data-name="Food For All"
+data-description="checking transaction"
+data-locale="auto"
+
+>
+</script>
+
+						<div style="overflow: hidden; padding-right: .5em;">
+						   <input type="number" name="amt" class="form-control" placeholder="USD" style="width: 100%;" value="100" required/>
+						</div>
+					</form> 
+				</div>
+			</div>
+		</div>
+		<% } %>
+	
+   </div>
+
+ 
+   
+   
+</div>
+</div>
+
+<%- include footer.ejs %>
+<script>
+	var btns=document.getElementsByClassName("stripe-button-el");
+	for(var i =0; i <=btns.length-1;  i++ )
+        document.getElementsByClassName("stripe-button-el")[i].style.display = 'none'; 
+        
+	</script>
+	<script src="https://unpkg.com/notie"></script>
+
+	<% if(locals.alert=="0") {%>
+	<script>
+			function perform2(){
+				notie.alert({ type: 'success', text: 'Your Transaction Is Successfull !', time: 2 })
+			  }
+		perform2();	</script>
+		 <%	}  if(locals.alert=="1"){ %>
+	 <script>
+			function perform1(){
+				notie.alert({ type: 'error', text: 'UnSuccessfull Transaction !', time: 2 })
+			  } 
+		perform1();	</script>
+	<% } %>
+	
+<%- include js2.ejs %>
+   </body></html>

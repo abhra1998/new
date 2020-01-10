@@ -1,0 +1,395 @@
+
+<html lang="en">
+  <head>
+      <%- include cssa.ejs %>
+    </head>
+<body class="loaded">
+ 
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+  <!-- START MAIN -->
+  <div id="main">
+    <!-- START WRAPPER -->
+    <div class="wrapper">
+
+        <%- include admin-header.ejs %>
+      
+
+      <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+      <!-- START CONTENT -->
+      <section id="content">        
+
+        <!--start container-->
+        <div class="container">
+
+          <div id="profile-page" class="section">
+            <!-- profile-page-header -->
+            <div id="profile-page-header" class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="user-profile-bg.jpg" alt="user background">                    
+                </div>
+                <figure class="card-profile-image">
+                    <img src="<%= data.photo %>" alt="profile image" class="circle z-depth-2 responsive-img activator">
+                    <p style="font-size: 20px;line-height:0px"><%= data.name %></p>
+                    <p style="font-size: 10px;line-height:0px"><%= data.work %></p>
+                </figure>
+                <div class="card-content">
+                  <div class="row" style="height:120px">  
+                                      
+                    <div class="col s3 offset-s2"> 
+                                          
+                        <h5 class="card-title grey-text text-darken-4" ></h5>
+                                          
+                    </div>
+                    <div class="col s6 center-align">
+                        <h4 class="card-title grey-text text-darken-4"></h4>
+                        <p class="medium-small grey-text"></p>                        
+                    </div>
+                                     
+                    <div class="col s1 right-align">
+                      <a class="btn-floating activator waves-effect waves-light darken-2 right">
+                          <i class="mdi-action-perm-identity"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-reveal">
+                    <p>
+                      <span class="card-title grey-text text-darken-4"><%= data.name %> <i class="mdi-navigation-close right"></i></span>
+                      <span><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> <%= data.work %></span>
+                    </p>
+
+                    <p><%= data.about %></p>
+                    
+                    <p><i class="mdi-action-perm-phone-msg cyan-text text-darken-2"></i><%= data.phone %></p>
+                    <p><i class="mdi-communication-email cyan-text text-darken-2"></i><%= data.email %></p>
+                    <p><i class="mdi-social-cake cyan-text text-darken-2"></i> <%= data.dob %></p>
+                    <p><i class="mdi-device-airplanemode-on cyan-text text-darken-2"></i>  <%= data.company %></p>
+                </div>
+            </div>
+            <!--/ profile-page-header -->
+
+            <!-- profile-page-content -->
+            <div id="profile-page-content" class="row">
+              <!-- profile-page-sidebar-->
+              <div id="profile-page-sidebar" class="col s12 m4">
+                <!-- Profile About  -->
+                <div class="card light-blue">
+                  <div class="card-content white-text">
+                    <span class="card-title">About Me!</span>
+                    <p><%= data.about %></p>
+                  </div>                  
+                </div>
+                <!-- Profile About  -->
+
+                <!-- Profile About Details  -->
+                <ul id="profile-page-about-details" class="collection z-depth-1">
+                  <li class="collection-item">
+                    <div class="row">
+                      <div class="col s5 grey-text darken-1"><i class="mdi-action-wallet-travel"></i> Company</div>
+                      <div class="col s7 grey-text text-darken-4 right-align"><%= data.company %></div>
+                    </div>
+                  </li>
+                  <li class="collection-item">
+                    <div class="row">
+                      <div class="col s5 grey-text darken-1"><i class="mdi-social-poll"></i> Aadhar</div>
+                      <div class="col s7 grey-text text-darken-4 right-align"><%= data.aadhar %></div>
+                    </div>
+                  </li>
+                  <li class="collection-item">
+                    <div class="row">
+                      <div class="col s5 grey-text darken-1"><i class="mdi-social-domain"></i> Lives in</div>
+                      <div class="col s7 grey-text text-darken-4 right-align"><%= data.livein %></div>
+                    </div>
+                  </li>
+                  <li class="collection-item">
+                    <div class="row">
+                      <div class="col s5 grey-text darken-1"><i class="mdi-social-cake"></i> Birth date</div>
+                      <div class="col s7 grey-text text-darken-4 right-align"><%= data.dob %></div>
+                    </div>
+                  </li>
+                </ul>
+                <!--/ Profile About Details  -->
+
+         
+
+                <!-- Profile feed  -->
+                <ul id="profile-page-about-feed" class="collection z-depth-1">
+                  <% for(var i=0;i<=data5.length-1;i++){ %>
+                  <li class="collection-item avatar">
+                    <img src="food.jfif" alt="" class="circle">
+                    <span class="title"><%= data5[i].name %></span>
+                    <p><%= data5[i].city %>
+                      <br> <span class="ultra-small"><%= data5[i].qty %></span>
+                    </p>
+                    <a href="" class="secondary-content"><i class="mdi-action-grade"></i></a>
+                  </li>
+                  <% } %>
+            
+                </ul>
+                <!-- Profile feed  -->
+
+               
+             
+
+              
+              </div>
+              <!-- profile-page-sidebar-->
+
+             <!-- task-card -->
+ <ul id="task-card3" class="collection with-header" style="padding-left: 10px;padding-right:10px;border:none">
+  <li class="collection-header cyan">
+      <h4 class="task-card-title">NGO Applications</h4>
+
+  </li>
+  <div style="overflow-y: scroll;max-height:250px">
+  <% for (var i =0; i <=data2.length-1;  i++ ) { %>
+  <li class="collection-item dismissable" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+      <input type="checkbox" id="<%= data2[i]._id %>">
+      <label for="<%= data2[i]._id %>" style="text-decoration: none;"><%= data2[i].id %> &nbsp; &nbsp;
+         <a href="" class="secondary-content"><span class="ultra-small"><%= data2[i].email %> &nbsp; &nbsp;</span></a>
+      </label>
+      <span class="task-cat cyan"><%= data2[i].name %></span>
+  </li>
+ <% } %>
+</div>
+ 
+</ul>
+<br>
+<!-- task-card -->
+           <!-- task-card -->
+           <ul id="task-card2" class="collection with-header" style="padding-left: 10px;padding-right:10px;border:none;" >
+            <li class="collection-header cyan">
+                <h4 class="task-card-title">Causes</h4>
+               
+            </li>
+       
+            <% for (var i =0; i <=data3.length-1;  i++ ) { %>
+              <li class="collection-item dismissable" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                  <input type="checkbox" id="<%= data3[i]._id %>">
+                  <label for="<%= data3[i]._id %>" style="text-decoration: none;">  <img src="<%= data3[i].photo %> " style="height: 35px;width:35px;" alt="" class="">&nbsp; &nbsp;
+                     <a href="" class="secondary-content"><span class="ultra-small"><%= data3[i].name %> &nbsp; &nbsp;</span></a>
+                  </label>
+                  <span class="task-cat purple"><%= data3[i].collectmoney%></span>
+              </li>
+             <% } %>
+  
+            
+          
+          </ul>
+          <!-- task-card -->
+                     <!-- task-card -->
+ <ul id="task-card1" class="collection with-header" style="padding-left: 10px;padding-right:10px;border:none">
+  <li class="collection-header cyan">
+      <h4 class="task-card-title">Upcoming Events</h4>
+     
+  </li>
+  <% for (var i =0; i <=data4.length-1;  i++ ) { %>
+    <li class="collection-item dismissable" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+        <input type="checkbox" id="<%= data4[i]._id %>">
+        <label for="<%= data4[i]._id %>" style="text-decoration: none;">  <img src="<%= data4[i].photo %> " style="height: 35px;width:35px;" alt="" class="">&nbsp; &nbsp;
+           <a href="" class="secondary-content"><span class="ultra-small"><%= data4[i].name %> &nbsp; &nbsp;</span></a>
+        </label>
+        <span class="task-cat teal"><%= data4[i].date%></span>
+
+        <span class="task-cat cyan"><%= data4[i].days %> Days</span>
+        <span class="task-cat purple"><%= data4[i].location %></span>
+    </li>
+   <% } %>
+  
+</ul>
+<!-- task-card -->
+              </div>
+              <!--/ profile-page-wall -->
+
+            </div>
+          </div>
+        </div>
+        </section></div>
+        <!--end container-->
+      
+      <!-- END CONTENT -->
+
+      <!-- //////////////////////////////////////////////////////////////////////////// -->
+      <!-- START RIGHT SIDEBAR NAV-->
+      <aside id="right-sidebar-nav">
+        <ul id="chat-out" class="side-nav rightside-navigation right-aligned ps-container ps-active-y" style="width: 300px; right: -310px; height: 823px;">
+            <li class="li-hover">
+            <a href="" data-activates="chat-out" class="chat-close-collapse right"><i class="mdi-navigation-close"></i></a>
+            <div id="right-search" class="row">
+                <form class="col s12">
+                    <div class="input-field">
+                        <i class="mdi-action-search prefix"></i>
+                        <input id="icon_prefix" type="text" class="validate">
+                        <label for="icon_prefix">Search</label>
+                    </div>
+                </form>
+            </div>
+            </li>
+            <li class="li-hover">
+                <ul class="chat-collapsible" data-collapsible="expandable">
+                <li class="active">
+                    <div class="collapsible-header teal white-text active"><i class="mdi-social-whatshot"></i>Recent Activity</div>
+                    <div class="collapsible-body recent-activity" style="display: block;">
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-action-add-shopping-cart"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="">just now</a>
+                                <p>Jim Doe Purchased new equipments for zonal office.</p>
+                            </div>
+                        </div>
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-device-airplanemode-on"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="">Yesterday</a>
+                                <p>Your Next flight for USA will be on 15th August 2015.</p>
+                            </div>
+                        </div>
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-action-settings-voice"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="">5 Days Ago</a>
+                                <p>Natalya Parker Send you a voice mail for next conference.</p>
+                            </div>
+                        </div>
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-action-store"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="">Last Week</a>
+                                <p>Jessy Jay open a new store at S.G Road.</p>
+                            </div>
+                        </div>
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-action-settings-voice"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="">5 Days Ago</a>
+                                <p>Natalya Parker Send you a voice mail for next conference.</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="collapsible-header light-blue white-text active"><i class="mdi-editor-attach-money"></i>Sales Repoart</div>
+                    <div class="collapsible-body sales-repoart" style="display: block;">
+                        <div class="sales-repoart-list  chat-out-list row">
+                            <div class="col s8">Target Salse</div>
+                            <div class="col s4"><span id="sales-line-1"><canvas width="33" height="30" style="display: inline-block; width: 33px; height: 30px; vertical-align: top;"></canvas></span>
+                            </div>
+                        </div>
+                        <div class="sales-repoart-list chat-out-list row">
+                            <div class="col s8">Payment Due</div>
+                            <div class="col s4"><span id="sales-bar-1"><canvas width="32" height="25" style="display: inline-block; width: 32px; height: 25px; vertical-align: top;"></canvas></span>
+                            </div>
+                        </div>
+                        <div class="sales-repoart-list chat-out-list row">
+                            <div class="col s8">Total Delivery</div>
+                            <div class="col s4"><span id="sales-line-2"><canvas width="33" height="30" style="display: inline-block; width: 33px; height: 30px; vertical-align: top;"></canvas></span>
+                            </div>
+                        </div>
+                        <div class="sales-repoart-list chat-out-list row">
+                            <div class="col s8">Total Progress</div>
+                            <div class="col s4"><span id="sales-bar-2"><canvas width="32" height="25" style="display: inline-block; width: 32px; height: 25px; vertical-align: top;"></canvas></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header red white-text"><i class="mdi-action-stars"></i>Favorite Associates</div>
+                    <div class="collapsible-body favorite-associates">
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Eileen Sideways</p>
+                                <p class="place">Los Angeles, CA</p>
+                            </div>
+                        </div>
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Zaham Sindil</p>
+                                <p class="place">San Francisco, CA</p>
+                            </div>
+                        </div>
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="avatar.jpg" alt="" class="circle responsive-img offline-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Renov Leongal</p>
+                                <p class="place">Cebu City, Philippines</p>
+                            </div>
+                        </div>
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Weno Carasbong</p>
+                                <p>Tokyo, Japan</p>
+                            </div>
+                        </div>
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="avatar.jpg" alt="" class="circle responsive-img offline-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Nusja Nawancali</p>
+                                <p class="place">Bangkok, Thailand</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                </ul>
+            </li>
+        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 763px; right: 3px;"><div class="ps-scrollbar-y" style="top: 0px; height: 707px;"></div></div></ul>
+      </aside>
+      <!-- LEFT RIGHT SIDEBAR NAV-->
+
+    </div>
+    <!-- END WRAPPER -->
+
+  
+  <!-- END MAIN -->
+
+
+
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+  <!-- START FOOTER -->
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+        <span><a class="grey-text text-lighten-4" href="" target="_blank"></span>
+        <span class="right">  <a class="grey-text text-lighten-4" href=""></a></span>
+        </div>
+    </div>
+  </footer>
+  <!-- END FOOTER -->
+
+<%- include jsa.ejs %>
+    
+  
+    <!-- Toast Notification -->
+    <script type="text/javascript">
+    // Toast Notification
+    $(window).load(function() {
+        setTimeout(function() {
+            Materialize.toast('<span>Hiya! I am a toast.</span>', 1500);
+        }, 1500);
+        setTimeout(function() {
+            Materialize.toast('<span>You can swipe me too!</span>', 3000);
+        }, 5000);
+        setTimeout(function() {
+            Materialize.toast('<span>You have new order.</span><a class="btn-flat yellow-text" href="#">Read<a>', 3000);
+        }, 15000);
+    });
+
+    </script>
+    
+
+
+<div class="hiddendiv common"></div><div class="drag-target" style="left: 0px; touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); right: 0px;"></div><div class="drag-target" style="right: 0px; touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div><div id="toast-container"></div></body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="zxx"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+	<%- include css2.ejs %>
+
+</head>
+<body>
+
+<div class="body">
+
+    <%- include donater1nav.ejs %>
+
+<div class="page_header">
+	<div class="container">
+		<div class="row">
+		<div class="col-sm-6">
+			<p>Change a Child's World</p>
+			<h4>Our Events</h4>
+		</div>
+		
+		<div class="col-sm-6">
+			<ul class="bcrumbs">
+				<li><a href="/">Home</a></li>
+				<li><span>Our Events</span></li>
+			</ul>
+		</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="inner-content">
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+
+				<% for (var i =0; i <=data.length-1;  i++ ) { %>
+<div class="event-posts gap-50">
+	
+	<div class="row">
+		<div class="col-sm-6">
+			<img class="img-responsive" src="<%= data[i].photo %>" alt="">
+		</div>
+		
+		<div class="col-sm-6">
+			<div class="ep-inner">
+				<small><%= data[i].days %> &nbsp;Days Event Sermony</small>
+				<h4><a ><%= data[i].name %></a></h4>
+				<p><%= data[i].details %></p>
+				<div class="ep-date">
+					<span class="primary-color">Date:</span><%= data[i].date %>
+				</div>
+				<div class="ep-location">
+					<span class="primary-color">Location: </span><%= data[i].location %>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<% } %>
+		</div>
+		
+		
+   </div>   
+ 
+   
+   
+   
+</div>
+</div>
+<%- include footer.ejs %>
+
+
+<%- include js2.ejs %>
+
+   </body></html>

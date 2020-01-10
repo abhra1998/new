@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <%- include cssa.ejs %>
+    </head>
+    <body>
+           
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+              <div class="modal-content">
+                <h4>Add an Image</h4>
+          
+                <div class="row">
+                  <form class="col s12">
+                    <div class="row modal-form-row">
+                      <div class="input-field col s12">
+                           
+                        <input id="image_url" type="file" class="validate">
+                        
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="image_title" type="text" class="validate">
+                        <label for="image_title">Title</label>
+                      </div>
+                    </div>       
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <textarea id="image_description" type="text" class="materialize-textarea validate"></textarea>
+                        <label for="image_description">Description</label>
+                      </div>
+                    </div>             
+                  </form>
+                </div>
+              </div>
+              <div class="modal-footer">
+                   
+                <a class=" modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+                <a class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+              </div>
+            </div>
+          
+          
+            <div id="main">
+                    <!-- START WRAPPER -->
+                    <div class="wrapper">
+            <%- include admin-header.ejs %>
+<br><br>
+            <div class="row" style="padding: 35px;">
+<div class="col l3 m3 s12">
+                    <div class="card">
+                            <div class="card-image">
+                              <img style="height: 180px;" src="food.jfif">
+                              <span class="card-title"></span>
+                              <br><br>
+                              <a  style="float: right;margin-right:25px" class="btn-floating halfway-fab waves-effect waves-light red pulse"><i class="fa fa-plus"></i></a>
+                              <br>
+                            </div>
+                            <div class="card-content">
+                              <p>
+                                Cause Name:  <input type="text" name="name" required>
+                                cause Details:  <input type="text" name="city" required>
+                                Money Needed: <input type="number" name="qty"  required>
+                              
+                              </p>
+                            </div>
+                          </div>
+            </div>
+                    <% for (var i =0; i <=data.length-1;  i++ ) { %>
+                        <div class="col l3 m3 s12" >
+            
+                                  <div class="card">
+                                    <div class="card-image">
+                                      <img style="height: 180px;" src=" <%= data[i].photo %>">
+                                      <span class="card-title">  <%= data[i].name %></span>
+                                    </div>
+                                    <div class="card-content">
+                                      <p>
+                                          Details: <%= data[i].details %><br>
+                                          Collect Money: <%= data[i].collectmoney %><br>
+                                      </p>
+                                    </div>
+                                    <div class="card-action">
+                                      <a href="" name="">Delete</a>
+                                      <a class="waves-effect waves-light modal-trigger" href="#modal1"  name="<%=data[i]._id  %>">Edit</a>
+                                     
+                                    </div>
+                                  </div>
+                            
+                       
+                          </div>
+                <% } %>
+            
+            </div>
+            
+        
+
+
+                    </div>
+                    </div>
+
+            <%- include jsa.ejs %>
+            <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+            <script>
+                    $(document).ready(function(){
+                        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+                        $('.modal-trigger').leanModal();
+                      });
+            </script>
+    </body>
+</html>

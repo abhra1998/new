@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zxx"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <%- include css3.ejs %>
+    <style>
+        .ht{
+            height: 45px;
+            width: 300px;
+        }
+        nav ul li{
+          float:none
+      }
+    </style>
+</head>
+<body>
+
+<div class="body">
+
+    <%- include donater1nav.ejs %>
+
+<div class="page_header">
+	<div class="container">
+		<div class="row">
+		<div class="col-sm-6">
+			<p>Change a Child's World</p>
+			<h4>PREVOIUS DONATE / EXCHANGE</h4>
+		</div>
+		
+		<div class="col-sm-6">
+			<ul class="bcrumbs">
+				<li><a href="/">Home</a></li>
+				<li><span>Previous Donate / Exchange</span></li>
+			</ul>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div class="container" style="padding: 35px;">
+     
+        <div class="row">
+            <% for (var i =0; i <=data.length-1;  i++ ) { %>
+                <div class="col-md-6 col-lg-3 col-sm-12" ;>
+    
+                          <div class="card" >
+                            <div class="card-image">
+                              <img style="height: 200px;" src="download.jfif">
+                              <span class="card-title">Location:<%= data[i].city %></span>
+                            </div>
+                            <div class="card-content" style="height: 210px">
+                              <p>
+                                    <span style="color:orange">DONATE</span><br>
+                                  Food Name: <%= data[i].name %><br>
+                                  Donater: <%= data[i].demail %><br>
+                                  
+                              Expiry Date: <%= data[i].date %><br>
+                              PickUp Time: <%= data[i].time1 %> to <%= data[i].time2 %><br>
+                              </p>
+                            </div>
+                            <div class="card-action" style="height: 80px;">
+                             
+                              <a >  <% if(data[i].status==2) {%>
+                                Status:  COMPLETED
+                            <% }else{ %>
+                            <a href="delivery/<%=data[i]._id  %>"><b style="text-decoration:underline">Accept Delivery</b></a> 
+                                <% } %>
+                            </a>
+                            </div>
+                          </div>
+                    
+               
+                  </div>
+        <% } %>
+        <% for (var i =0; i <=data2.length-1;  i++ ) { %>
+            <div class="col-md-6 col-lg-3 col-sm-12" ;>
+
+                      <div class="card" >
+                        <div class="card-image">
+                          <img style="height: 200px;" src="download.jfif">
+                          <span class="card-title">Location:<%= data2[i].city %></span>
+                        </div>
+                        <div class="card-content" style="height: 210px">
+                          <p>
+                                <span style="color:orange">EXCHANGE</span><br>
+                              Food Name: <%= data2[i].name %><br>
+                              Donater: <%= data2[i].demail %><br>
+                              Price: <%= data2[i].price %><br>
+                          Expiry Date: <%= data2[i].date %><br>
+                          PickUp Time: <%= data2[i].time1 %> to <%= data2[i].time2 %><br>
+                          </p>
+                        </div>
+                        <div class="card-action" style="height: 80px;">
+                         
+                          <a > <%if(data2[i].status==2) {%>
+                            Status: COMPLETED
+                        <% }else{ %>
+                          <a href="delivery2/<%=data2[i]._id  %>"><b style="text-decoration:underline">Accept Delivery</b></a> 
+                            <% } %>
+                        </a>
+                        </div>
+                      </div>
+                
+           
+              </div>
+    <% } %>
+    
+    </div>
+    
+      
+    
+    </div>
+</div>
+         
+<%- include footer.ejs %>
+<script src="https://unpkg.com/notie"></script>
+<script>
+	function perform(){
+		notie.alert({ type: 'success', text: 'Successfully Delivered!', time: 2 })
+	  }
+  
+    
+</script>
+<% if(locals.alerts=="1") {%>
+<script>
+perform();
+</script>
+  <% } %>
+
+
+  <%- include js2.ejs %>
+   </body></html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zxx"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <%- include css3.ejs %>
+  
+    <style type="text/css">
+        .ht{
+            height: 45px;
+        }
+        nav ul li{
+          float:none
+      }
+            body {
+                color: #566787;
+                background: #f5f5f5;
+        
+                font-size: 13px;
+            }
+ 
+            
+
+        </style>
+</head>
+<body>
+
+<div class="body">
+
+    <%- include donater1nav.ejs %>
+
+   
+
+<div class="page_header">
+	<div class="container">
+		<div class="row">
+		<div class="col-sm-6">
+			<p>Change a Child's World</p>
+			<h4>Donate</h4>
+		</div>
+		
+		<div class="col-sm-6">
+			<ul class="bcrumbs">
+				<li><a href="/">Home</a></li>
+				<li><span>Donate Food</span></li>
+			</ul>
+		</div>
+		</div>
+	</div>
+</div>
+<div class="container" style="padding:15px;">
+    <form action="/donate3" method="POST">
+        <div class="row" id="divv">
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                  <div class="card">
+                    <div class="card-image">
+                      <img style="height: 180px;" src="download.jfif">
+                      <span class="card-title">Card Title</span>
+                      <a onclick="add(this)"  class="btn-floating halfway-fab waves-effect waves-light red pulse"><i class="fa fa-plus"></i></a>
+                      <a style="display: none;" onclick="del(this)" class="btn-floating halfway-fab waves-effect2 waves-light red pulse"><i class="fa fa-trash-o"></i></a>
+                    </div>
+                    <div class="card-content">
+                      <p>
+                        Food Name:  <input type="text" name="name" required>
+                        Location(City):  <input type="text" name="city" required>
+                        Food Qty: <input type="number" name="qty"  required>
+                        Exp Date: <input type="date" name="date" required>
+                        Pick Up Time:<br> <input type="time" name="time1" style="width: 43%;" required>&nbsp; to &nbsp;<input type="time" name="time2" style="width: 43%;" required>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              
+              </div>
+              <center>
+                  <button style="background-color: rgb(130, 202, 250);border:none" class="btn">Submit</button>
+                     
+                  
+            </center>
+        </form>         
+</div>
+
+<%-include footer.ejs %>
+<!-- Edit Modal HTML -->
+<script>
+    function add(e){
+        e.style.display = "none";
+        console.log(e.nextElementSibling)
+        e.nextElementSibling.style.display = "block"
+        var divv=$('#divv')
+        divv.append('<div class="col-lg-3 col-md-6 col-sm-12"><div class="card"><div class="card-image"> <img style="height: 180px;" src="download.jfif"><span class="card-title">Card Title</span><a onclick="add(this)"  class="btn-floating halfway-fab waves-effect waves-light red pulse"><i class="fa fa-plus"></i></a> <a style="display: none;" onclick="del(this)" class="btn-floating halfway-fab waves-effect2 waves-light red pulse"><i class="fa fa-trash-o"></i></a></div> <div class="card-content"><p>Food Name:  <input type="text" name="name" required>Location(City):  <input type="text" name="city" required>Food Qty: <input type="number" name="qty"  required>Exp Date: <input type="date" name="date" required>Pick Up Time:<br> <input type="time" name="time1" style="width: 43%;" required>&nbsp; to &nbsp;<input type="time" name="time2" style="width: 43%;" required></p></div></div></div>');  
+    }
+    function del(e){
+        e.parentNode.parentNode.remove('div')
+    }
+</script>
+<script src="https://unpkg.com/notie"></script>
+<script>
+	function perform(){
+		notie.alert({ type: 'success', text: 'Your Product Is Added !', time: 3 })
+      }
+    </script>
+
+    <% if(locals.alert=="1") {%>
+        <script>
+        perform();
+        </script>
+            <% } %>
+
+
+            <%- include js2.ejs %>
+
+
+
+   </body></html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="zxx"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+
+
+<%- include css.ejs %>
+
+</head>
+<body>
+<div class="body">
+<%- include donater1nav.ejs %>
+<% if (locals.logtype==undefined) {  %>
+<%- include all2nav.ejs %>
+<% } %>
+<% if (locals.logtype=="1") {  %>
+	<%- include donater2nav.ejs %>
+	<% } %>
+	<% if (locals.logtype=="2") {  %>
+		<%- include ngo2nav.ejs %>
+		<% } %>
+<div class="home-slider-1">
+		<div class="home-slider">
+			<div class="hs-inner" style="background: url(images/slider/1.jpg) no-repeat center 0;">
+				<div class="container">
+					<div class="col-sm-10 col-sm-offset-1">
+						<h2>Help Poor Children<br><strong>For Homeless</strong></h2>
+						<p>Help accomplish the goal to make the world</p>
+						<a href="/donate" class="btn btn-lg" style="border:none">
+							Donate
+						</a>
+						<a href="/exchange" class="btn btn-lg" style="background-color: orange;border:none">
+								Exchange
+								</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="hs-inner" style="background: url(images/slider/2.jpg) no-repeat center 0;">
+				<div class="container">
+					<div class="col-sm-10 col-sm-offset-1 text-center">
+						<h2>Support a cause<br><strong>For Homeless</strong></h2>
+						<p>Help accomplish the goal to make the world</p>
+						<a href="/donate" class="btn btn-lg" style="border:none">
+								Donate
+							</a>
+							<a href="/exchange" class="btn btn-lg" style="background-color: orange;border:none">
+									Exchange
+									</a>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="home-cause">
+		<div class="container">
+		
+			
+			<div class="donation-cause">
+					<div class="container">
+						<div class="custom heading text-center">
+							<h2>Our Donation Causes</h2>
+							<p>Change a child's world</p>
+							<img src="./sep.png" class="center-block" alt="">
+						</div>
+						<div class="row">
+								<% 
+							
+								for (var i =0; i <=data.length-1;  i++ ) { %>
+									<div class="col-sm-4 gap-60">
+										<div class="donation-causes text-center">
+											<img class="img-responsive" src="<%= data[i].photo %>" alt="">
+											
+												<h4><a href="#"><%= data[i].name %></a></h4>
+											<p><%= data[i].details %></p>
+											<br>
+											<em style="float: left;">Collect: <span class="text-style"><%= data[i].collectmoney %></span>&nbsp;USD</em>
+											<div class="sep_alt"></div>
+											<div class="group">
+												
+												
+											
+												<form action="/charge2" method="post">
+													<input style="display: none;" name="name" value="<%= data[i].name %>">
+													<input type="submit" class="btn" value="Donate" style="float: right;height:20px;margin-top:-5px"   src="https://checkout.stripe.com/checkout.js" />
+													<script 
+							src="https://checkout.stripe.com/checkout.js"
+							class="stripe-button"
+							data-key="pk_test_cpWr8SGQ6C9eldovGl2I9Ynr00BOrmsntN"
+							data-amount="0"
+							data-name="Food For All"
+							data-description="checking transaction"
+							data-locale="auto"
+							
+							>
+							</script>
+							
+													<div style="overflow: hidden; padding-right: .5em;">
+													   <input type="number" name="amt" class="form-control" placeholder="USD" style="width: 100%;" value="100" required/>
+													</div>
+												</form> 
+											</div>
+										</div>
+									</div>
+									<%
+							
+								
+									 } %>
+						</div>
+					</div>
+				</div>
+		
+		</div>
+	</div>
+
+
+
+<div class="features">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8">
+				<h5>Why People Choose Us</h5>
+				<p>One of the most popular charitable projects</p>
+			
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="item">
+							<div class="icon">
+								<img src="1(1).png" alt="">
+							</div>
+							<div class="f-inner">
+								<h4>Charity Networt</h4>
+								<p>The first $25,000 we raise will go<br>100% to the Donation.</p>
+							</div>
+						</div>
+						<div class="item">
+							<div class="icon">
+								<img src="2(1).png" alt="">
+							</div>
+							<div class="f-inner">
+								<h4>Solve Problems</h4>
+								<p>Get your questions answered by<br>our staff, fellow users</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="item">
+							<div class="icon">
+								<img src="3.png" alt="">
+							</div>
+							<div class="f-inner">
+								<h4>Kids EDUCATION</h4>
+								<p>16,000 students and professionals<br>from the global Word</p>
+							</div>
+						</div>
+						<div class="item">
+							<div class="icon">
+								<img src="4.png" alt="">
+							</div>
+							<div class="f-inner">
+								<h4>Healping Hand</h4>
+								<p>300 moderated sessions. 450 hours<br>of technical training</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<img src="girl3.png" alt="">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="home-stats">
+	<div class="container">
+		<div class="row">
+			<p style="font-size:34px;">You Can Donate / Exchange Food And Donate Money For Great Purposes</p>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="home-events bg-gray">
+<div class="container">
+
+<div class="custom heading text-center">
+					<h2>Our Charity Events</h2>
+					<p>Change a child's world</p>
+					<img src="sep.png" class="center-block" alt="">
+				</div>
+
+
+<div class="event-posts">
+	<div class="events-posts-home" style="width: 280px;">
+		<ul>
+			<li class="active">
+				<i class="fa fa-caret-right"></i>
+				<span><%= data2[0].date %></span>
+				<h6><%= data2[0].name %></h6>
+			</li>
+			
+			<li class="active">
+				
+				<span><%= data2[1].date %></span>
+				<h6><%= data2[1].name %></h6>
+			</li>
+		</ul>	
+		
+		<a href="/event2">Event Calendar</a>
+	</div>
+
+	<div class="row center-content-md">
+		<div class="col-md-6 ">
+			<img class="img-full" src="<%= data2[0].photo %>" alt="">
+		</div>
+		
+		<div class="col-md-6">
+			<div class="ep-inner">
+				<small><%= data2[0].days %> Days Event Sermony</small>
+				<h4><p><%= data2[0].name %></p></h4>
+				<p><%= data2[0].details %></p>
+				<div class="ep-date bg-white">
+					<span class="primary-color">Date:</span> <%= data2[0].date %>
+				</div>
+				<div class="ep-location bg-white">
+					<span class="primary-color">Location: </span><%= data2[0].location %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+</div>
+
+<%- include footer.ejs %>
+<script>
+		var btns=document.getElementsByClassName("stripe-button-el");
+		for(var i =0; i <=btns.length-1;  i++ )
+			document.getElementsByClassName("stripe-button-el")[i].style.display = 'none'; 
+			
+		</script>
+		<script src="https://unpkg.com/notie"></script>
+	
+		<% if(locals.alert=="0") {%>
+		<script>
+				function perform2(){
+					notie.alert({ type: 'success', text: 'Your Transaction Is Successfull !', time: 2 })
+				  }
+			perform2();	</script>
+			 <%	}  if(locals.alert=="1"){ %>
+		 <script>
+				function perform1(){
+					notie.alert({ type: 'error', text: 'UnSuccessfull Transaction !', time: 2 })
+				  } 
+			perform1();	</script>
+		<% } %>
+		<script>
+	function perform5(){
+		notie.alert({ type: 'success', text: 'Password Updated Successfully!', time: 3 })
+	  }
+
+	
+</script>
+<% if(locals.alert=="5") {%>
+<script>
+perform5();
+</script>
+	<% } %>
+
+<script>
+	function  logout(){
+		notie.confirm({
+			text: 'Are you sure you want to do that?<br><b>That\'s a bold move...</b>',
+			cancelCallback: function () {
+			 
+			},
+			submitCallback: function () {
+				$.get("/logout")
+			}
+		  })
+	}
+</script>
+
+<%- include js .ejs %>
+
+
+   </body></html>

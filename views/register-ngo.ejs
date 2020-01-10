@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zxx"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <%- include css2.ejs %>
+    <style>
+        .ht{
+            height: 45px;
+            width: 300px;
+        }
+      
+    </style>
+</head>
+<body>
+
+<div class="body">
+
+    <%- include ngo1nav.ejs %>
+
+   
+
+<div class="page_header">
+	<div class="container">
+		<div class="row">
+		<div class="col-sm-6">
+			<p>Change a Child's World</p>
+			<h4>NGO Register</h4>
+		</div>
+		
+		<div class="col-sm-6">
+			<ul class="bcrumbs">
+				<li><a href="/">Home</a></li>
+				<li><span>Ngo Register</span></li>
+			</ul>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div class="container" style="padding:35px;">
+     
+    <div class="card row container shadow p-3 mb-3 bg-white rounded" style="width:50%;" >
+         
+       
+<form method="post">  
+<div class="card marg shadow p-3 mb-5 bg-white rounded"  >
+ 
+    <div class="card-body">
+     <b>Email:</b> 
+      <input id="email" name="email" class="form-control ht" value= "" required /><br>
+      <b>  Name:</b>
+      <input type="text" id="name" name="name" class="form-control ht" value= "" required /><br>
+      <b>Id:</b> 
+      <input id="id" name="id" class="form-control ht" value= "" required /><br>
+     
+      <b>  Password:</b>
+      <input type="password" id="password" name="password" class="form-control ht" value= "" required /><br>
+      <b>Confirm  Password:</b>
+      <input type="password" id="confirm" name="confirm" class="form-control ht" value= "" required /><br>
+      <button type="submit" formaction="/ngo-adddonater" class="btn btn-info" style="width: 300px;height:60px;">Register</button>
+  </div>
+ 
+        </form>     
+        <br><br>
+You Have an Account? <a href="/ngo-login">Login</a>
+     
+      </div>
+      
+
+</div>
+</div>
+<%- include footer.ejs %>        
+<script>
+        function perform(){
+            notie.alert({ type: 'info', text: 'Please Login Here !', time: 3 })
+          }
+          function perform2(){
+            notie.alert({ type: 'error', text: 'Username or Password Not Matched!', time: 3 })
+          }
+          function perform3(){
+            notie.alert({ type: 'warning', text: 'Username Not Exist !', time: 3 })
+          }
+          function perform4(){
+            notie.alert({ type: 'success', text: 'Password Update Successfully !', time: 3 })
+          }
+        
+    </script>
+    <script src="https://unpkg.com/notie"></script>
+    <script>
+        	function perform(){
+                notie.alert({ type: 'error', text: 'Email Not Exist !', time: 3 })
+              }
+              function perform2(){
+                notie.alert({ type: 'error', text: 'Aadhar No Not Exist!', time: 3 })
+              }
+              function perform3(){
+                notie.alert({ type: 'warning', text: 'Password or Confirm Password Not Match !', time: 3 })
+              }
+          
+              function perform4(){
+                notie.alert({ type: 'warning', text: 'Already Have an Account !', time: 3 })
+              }
+            
+        </script>
+    <% if(locals.alert=="1") {%>
+    <script>
+    perform();
+    </script>
+        <% } %>
+        <% if(locals.alert=="2") {%>
+            <script>
+            perform2();
+            </script>
+                <% } %>
+                <% if(locals.alert=="3") {%>
+                    <script>
+                    perform3();
+                    </script>
+                        <% } %>
+
+                        <% if(locals.alert=="4") {%>
+                            <script>
+                            perform4();
+                            </script>
+                                <% } %>
+    
+                                <%- include js2.ejs %>
+
+   </body></html>

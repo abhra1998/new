@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="zxx"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <%- include css2.ejs %>
+    <style>
+        .ht{
+            height: 45px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="body">
+
+    <%- include donater1nav.ejs %>
+
+   
+
+<div class="page_header">
+	<div class="container">
+		<div class="row">
+		<div class="col-sm-6">
+			<p>Change a Child's World</p>
+			<h4>Become A Volunteer</h4>
+		</div>
+		
+		<div class="col-sm-6">
+			<ul class="bcrumbs">
+				<li><a href="/">Home</a></li>
+				<li><span>Volunteer</span></li>
+			</ul>
+		</div>
+		</div>
+	</div>
+</div>
+<div class="container" style="padding:15px;">
+      
+    <div class="card container shadow p-3 mb-3 bg-white rounded"  >
+         
+       
+<form method="post">  
+<div class="card marg shadow p-3 mb-5 bg-white rounded"  >
+    <div class="card-header" style="color:orange">
+    Basic Info:
+    </div>
+    <div class="card-body">
+     <b>Email:</b> 
+     <% if(locals.data) {%>
+      <input id="email" name="email" class="form-control ht" value= "<%= data.email %>" readonly /><br>
+      <% } else{%>
+        <input id="email" name="email" class="form-control ht" value= "" required /><br>
+        <% } %>
+      <b>  Name:</b>
+      <% if(locals.data) {%>
+        <input id="name" name="name" class="form-control ht" value= "<%= data.name %>" readonly /><br>
+      <% } else{%>
+      <input id="name" name="name" class="form-control ht" value= "" required /><br>
+      <% } %>
+      <b>  Aadhar Card No:</b>
+      <% if(locals.data) {%>
+      <input id="aadhar" name="aadhar" class="form-control ht" value= "<%= data.aadhar %>"  readonly /><br>
+      <% } else{%>
+        <input id="aadhar" name="aadhar" class="form-control ht" value= ""  required /><br>
+        <% } %>
+      <b>  Phone No:</b>
+      <input id="phone" name="phone" class="form-control ht" value= ""  required /><br>
+    </div>
+  </div>
+  <div class="card marg shadow p-3 mb-5 bg-white rounded"  >
+        <div class="card-header" style="color:orange">
+        Location Info:
+        </div>
+        <div class="card-body">
+           
+            <b> Address Line 1:</b> 
+            <input id="address1" name="address1" class="form-control ht" value= "" required /><br>
+            <b> Address Line 2:</b> 
+            <input id="address2" name="address2" class="form-control ht" value= "" required /><br>
+            <b> Landmark:</b> 
+            <input id="landmark" name="landmark" class="form-control ht" value= "" required/><br>
+            <b> Pincode:</b> 
+            <input id="pincode" name="pincode" class="form-control ht" value= "" required /><br>
+            <b> City:</b> 
+            <input id="city" name="city" class="form-control ht" value= "" required/><br>
+           
+        </div>
+     
+      </div>
+    
+      <div class="btn-group" role="group" aria-label="Basic example" style="width: 100%;">
+        
+            <button type="submit" formaction="/" id="can" class="btn btn-danger"  style="width: 50%;height:60px;">Cancel</button>
+            <button type="submit" formaction="/addvolunteer" class="btn btn-info" style="width: 50%;height:60px;">Continue</button>
+        
+            
+          </div>
+        </form>     
+
+     
+      </div>
+
+</div>
+<%-include footer.ejs %>
+          <script>
+            $(document).ready(function(){
+              $("#can").click(function(){
+                $('#email').removeAttr('required');
+                $('#name').removeAttr('required');
+                $('#aadhar').removeAttr('required');
+                $('#phone').removeAttr('required');
+                $('#address1').removeAttr('required');
+                $('#address2').removeAttr('required');
+                $('#landmark').removeAttr('required');
+                $('#pincode').removeAttr('required');
+                $('#city').removeAttr('required');
+               
+              });
+            });
+          </script>
+          <script src="https://unpkg.com/notie"></script>
+<script>
+	function perform(){
+		notie.alert({ type: 'success', text: 'Successfully Submited Your Respponse!', time: 2 })
+	  }
+  
+    function perform2(){
+      notie.alert({ type: 'warning', text: 'Email Aleady Exist!', time: 2 })
+      }
+    
+</script>
+<% if(locals.alert=="1") {%>
+<script>
+perform();
+</script>
+  <% } %>
+  <% if(locals.alert=="2") {%>
+    <script>
+    perform2();
+    </script>
+      <% } %>
+
+      <%- include js2.ejs %>
+
+   </body></html>
